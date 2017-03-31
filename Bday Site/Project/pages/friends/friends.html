@@ -1,0 +1,54 @@
+<style>
+	.player{
+		display: none;
+	}
+</style>
+<div ng-controller="friendcontroller">
+	<div class="player">
+		<audio controls autoplay loop>
+			<source src="./audio/bgm.mp3" type="audio/mpeg">
+		</audio>	
+	</div>
+	<div class="row">
+		<div ng-repeat="friend in friends">
+			<div class="col-md-3" ng-click="showModal(friend)">
+				<div class="thumbnail zoom">
+					<!-- <img src="./images/{{friend.image}}.jpg" class="img-responsive"> -->
+					<div data-toggle="modal" class="overlay img-responsive zoom" data-target="#myModal"  style="top:10px;">
+						<a class="info"><img src="./images/{{friend.image}}.jpg"></img></a>
+					</div>
+					<div class="caption">
+						<div class="row">
+							<div class="font-effect-wallpaper" class="col-md-12 col-xs-12" style="color:red">
+								<center><h3>{{friend.name}}</h3></center>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title" style="color: black">{{selectedFriend.name}}</h4>
+					</div>
+
+					<div class="modal-body img-responsive">
+						<img class="img-responsive" ng-src="./images/{{selectedFriend.image}}.jpg" alt="not found" style="width: 100%; height:50%;" />
+						<div style="color: black"><b>Description:</b>{{selectedFriend.description}}</div>
+					<!-- <div ng-repeat="l in selectedMovie.m_loc | filter:city">
+						<center><b>Ticketes available in your city!</b></center>
+					</div> -->
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
